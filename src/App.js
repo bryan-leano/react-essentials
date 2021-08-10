@@ -1,19 +1,27 @@
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function SecretComponent() {
-  return <h1>Secret information for authorized users only.</h1>
-}
+function App() {
+  const [emotion, setEmotion] = useState('happy');
+  const [secondary, setSecondary] = useState('tired');
 
-function RegularComponent() {
-  return <h1>Everyone can see this component.</h1>
-}
+  useEffect(() => {
+    console.log(`It's ${emotion} around here!`)
+  }, [emotion]);
 
-function App({ authorized }) {
+  useEffect(() => {
+    console.log(`It's ${secondary} around here!`)
+  }, [secondary]);
+
   return (
     <>
-      {authorized ? <SecretComponent /> : <RegularComponent />}
+      <h1>My current emotion is {emotion} and {secondary}.</h1>
+      <button onClick={() => setEmotion("happy")}>Make Happy</button>
+      <button onClick={() => setSecondary("crabby")}>Make crabby</button>
+      <button onClick={() => setEmotion("frustrated")}>Frustrate</button>
+      <button onClick={() => setEmotion("enthusiastic")}>Enthuse</button>
     </>
-  )
+  );
 }
 
 export default App;
