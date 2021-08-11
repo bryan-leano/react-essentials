@@ -5,6 +5,6 @@ import App from './App';
 
 
 ReactDOM.render(
-  <App />,
+  <App login='bryan-leano' />,
   document.getElementById('root')
 );
